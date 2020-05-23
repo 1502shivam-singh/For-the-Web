@@ -1,1 +1,245 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
 
+.intro {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: 900;
+  color: white;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+/* .navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item .nav-link:active,
+.navbar-light .nav-item .nav-link:focus,
+.navbar-light .nav-item:hover .nav-link {
+    color: #F8758B;
+} */
+.nav-item {
+  padding-left: 0;
+  padding-right: 15px;
+}
+
+.nav-link {
+  color: white !important;
+  font-size: 1.2rem !important;
+}
+
+.nav-link:hover {
+  color: black !important;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+#topcontainer {
+  background-color: #ff4c68;
+  /* position: relative;
+  z-index: -1; */
+  padding: 2% 7% 7% 7%;
+}
+
+.navbar {
+  padding-left: 0;
+  padding-bottom: 4.5rem;
+}
+
+.iphone6 {
+  transform: rotateZ(25deg);
+  width: 60%;
+  margin-left: 13%;
+  margin-top: 10%;
+  position: relative;
+  z-index: 0;
+}
+
+@media (max-width: 992px) {
+  .intro {
+    font-family: "Montserrat", sans-serif;
+    font-size: 4rem;
+    line-height: 1.5;
+    font-weight: 900;
+    color: white;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: center;
+  }
+
+  .iphone6 {
+    transform: rotateZ(0);
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 10%;
+    position: relative;
+    z-index: 0;
+  }
+}
+
+/* mid container */
+/* icons */
+.icon {
+  text-align: center;
+  margin: 0 auto 5% 44%;
+  color: #ef8172;
+}
+
+.icon:hover {
+  color: red;
+}
+
+@media (max-width:992px) {
+  .icon {
+    text-align: center;
+    margin: 0 auto 5% 47%;
+    color: #ef8172;
+  }
+}
+
+/* icon */
+.heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #8f8f8f;
+}
+
+#features {
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+#features-info {
+  padding-top: 10%;
+  margin: -13% 0 10% 0;
+  position: relative;
+  z-index: 1;
+}
+
+.feat {
+  margin: 5% 0 5% 0;
+  /* separates the elements of features block in mobile mode */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Testimonials */
+#testimonials {
+  background-color: #ff4c68;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+.dogbark {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: white;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 7%;
+  padding-bottom: 1%;
+  line-height: 3.25rem;
+}
+
+.dog {
+  border-radius: 100%;
+  width: 7%;
+  height: 10%;
+}
+
+.Press {
+  /* padding-top: 7%; */
+  width: 13%;
+  margin: 2% 1% 5% 1%;
+}
+
+.carousel-item {
+  padding-bottom: 50px;
+}
+
+/* Pricing */
+.price-head {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin: 8% 5% 1% 5%;
+}
+
+.plan-info {
+  text-align: center;
+  color: grey;
+}
+
+.typedog {
+  text-align: center;
+}
+
+.pack {
+  text-align: center;
+}
+
+.pcard {
+  margin: auto;
+}
+
+.longerhead {
+  padding-top: 38px;
+  font-weight: 501;
+  font-size: 1.5rem;
+}
+
+.prices {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.dogname {
+  font-weight: 501;
+  font-size: 1.5rem;
+}
+
+.deck {
+  margin-bottom: 8%;
+}
+
+/* bottom-section */
+#cta {
+  background-color: #ff4c68;
+}
+
+.ctam {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: white;
+  margin: 8% 5% 1% 5%;
+  padding: 7% 1% 6% 1%;
+}
+
+.buttons{
+  padding-bottom: 5%;
+  margin: 0 0 0 39%;
+}
+
+@media (max-width: 1246px) {
+  .buttons{
+    padding-bottom: 5%;
+    margin: 0 0 0 32%;
+  }
+}
