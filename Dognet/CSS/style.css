@@ -218,6 +218,7 @@ body {
 }
 
 /* bottom-section */
+
 #cta {
   background-color: #ff4c68;
 }
@@ -234,35 +235,20 @@ body {
 
 .buttons{
   padding-bottom: 5%;
-  margin: 0 0 0 39%;
 }
 
-@media (max-width: 1246px) {
-  .buttons{
-    padding-bottom: 5%;
-    margin: 0 0 0 32%;
-  }
+#cta{
+  text-align: center;
 }
 
-.social{
-  padding: 5% 5% 1% 41%;
+#footer{
+  text-align: center;
 }
 
 .socialm{
-  margin: 0 1% 0 1%;
+  margin: 3% 1% 1% 1%;
 }
 
 .Copyright{
-  padding: 0 0 2% 37%;
+  padding-bottom: 2%;
 }
-
-@media (min-width: 1396px) {
-  .social{
-    padding: 5% 5% 1% 44%;
-  }
-
-  .Copyright{
-    padding: 0 0 2% 42%;
-  }
-}
-
