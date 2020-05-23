@@ -243,3 +243,26 @@ body {
     margin: 0 0 0 32%;
   }
 }
+
+.social{
+  padding: 5% 5% 1% 41%;
+}
+
+.socialm{
+  margin: 0 1% 0 1%;
+}
+
+.Copyright{
+  padding: 0 0 2% 37%;
+}
+
+@media (min-width: 1396px) {
+  .social{
+    padding: 5% 5% 1% 44%;
+  }
+
+  .Copyright{
+    padding: 0 0 2% 42%;
+  }
+}
+
