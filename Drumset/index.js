@@ -1,11 +1,11 @@
-for(var i=1;i<=7;i++){
+for(var i=1;i<=7;i++){      //Loop to put event listeners on all buttons
 document.querySelector(".drum"+i).addEventListener("click",function(){
-  detectkey(this.innerHTML);
-  addstyle(this.innerHTML);
+  detectkey(this.innerHTML);    //Detects key press definition below (1)
+  addstyle(this.innerHTML);   //Brings pressed animation definition below (2)
 });
 }
 
-function detectkey(value){
+function detectkey(value){    //Function-1
   switch (value) {
     case "w":
       var audio=(new Audio('sounds/crash.mp3'));
@@ -38,7 +38,7 @@ function detectkey(value){
   }
 }
 
-function addstyle(keypress){
+function addstyle(keypress){      //Function-2
   document.querySelector("."+keypress).classList.add("pressed");
   setTimeout(function(){document.querySelector("."+keypress).classList.remove("pressed");},50);
 
