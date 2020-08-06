@@ -1,0 +1,28 @@
+<%- include("Partials/header"); %> 
+
+<body>
+    <h1>Home</h1>
+    <p><%= homeStartingContent_h %> </p>
+    
+   <% blogs_h.forEach((blog)=>{ %>
+    <% if(blog.postBody.length <= 100){  %>
+    <div>
+        <h2> <%= blog.postTitle %>  </h2>
+        <p>
+            <%= blog.postBody %> 
+        </p>    
+    </div>
+    <%  } else {  %>
+        <div>
+            <h2> <%= blog.postTitle %>  </h2>
+            <p>
+                <%= blog.postBody.substring(0,100) %><a href="posts/<%= blog.postlink %>"> ... read more</a>  
+            </p>    
+        </div> 
+    <%   }   %>
+   <% }) %>
+
+    
+</body>
+
+<%- include("Partials/footer"); %> 
