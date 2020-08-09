@@ -9,7 +9,7 @@
 
 <body>
   <div class="box" id="heading">
-    <h1><%= currDay %></h1>
+    <h1><%= currlist %></h1>
   </div>
 <div class="box">
   <% tasklist_e.forEach(element => { %>  
@@ -20,11 +20,12 @@
         <%= element.name; %>
       </p>
     </div>
+    <input type="hidden" name="list_id" value="<%= currlist %>">
   </form>
   <% }); %>  
   <form class="list_item item" action="/" method="post">
     <input type="text" id="taskTitle" class="form-control" placeholder="Add some tasks" name="task" required autofocus>
-    <button class="add_task" type="submit">+</button>
+    <button class="add_task" value="<%= currlist %>" name="list" type="submit">+</button>
   </form>
 </div>
 
