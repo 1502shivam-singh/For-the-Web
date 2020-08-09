@@ -10,10 +10,9 @@ app.use(express.static("public"));
 
 app.use(bp.urlencoded({extended: true}));
 
-let tasklist = [];
-
 mongo.connect('mongodb://localhost:27017/ToDolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
+//Lists collection
 const ListSchema = new mongo.Schema({
   name: {
     required: true,
@@ -23,77 +22,116 @@ const ListSchema = new mongo.Schema({
 
 const List = mongo.model("List",ListSchema);
 
-const task_1 = new List({
-  name: "Task 1"
+//Liststores collection
+const ListstoreSchema = new mongo.Schema({
+  name: {
+    required: true,
+    type: String
+  },
+  lists: [ListSchema] 
 });
 
-const task_2 = new List({
-  name: "Task 2"
-});
-
-const task_3 = new List({
-  name: "Task 3"
-});
-
+const listStore = new mongo.model("listStore",ListstoreSchema);
 
 app.get("/",(req,res)=>{
-  var date = new Date();
-
-  options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-  };
-
-  var day = date.toLocaleDateString("en-US", options);
+  // var date = new Date();
+  // options = {
+  //   weekday: "long",
+  //   day: "numeric",
+  //   month: "long"
+  // };
+  // var day = date.toLocaleDateString("en-US", options);
 
   List.find((err, list)=>{
     if(err){
       console.log(err);
     }
     else{
-      res.render('index', {currDay: day,tasklist_e: list});
-      // if(tasklist.length === 0){
-      //   List.find({},(err,item)=>{
-      //     if(err){
-            
-      //     }
-      //     else{
-      //     item.forEach((task)=>{
-      //       tasklist.push(task.name);
-      //     });
-      //   }
-      //   });
-      //   res.redirect("/");
-      // }
-      // else{
-      //   res.render('index', {currDay: day,tasklist_e: tasklist});
-      // }
+      //res.render('index', {currDay: day,tasklist_e: list}); displays todays date
+      res.render('index', {currlist: "Today",tasklist_e: list});
     }
   });
 });
 
-app.post("/",(req,res)=>{
-    var task_name = req.body.task;
-    const task = new List({
-      name: task_name
-    });
-    task.save();
-    tasklist.push(task.name);
-    res.redirect("/");
-});
-
-app.post("/delete",(req,res)=>{
-  console.log(req.body.checkbox.name);
-  List.deleteOne({name: req.body.checkbox.name},(err)=>{
+app.get("/:customListName",(req,res)=>{
+  if(listStore.findOne({name: req.params.customListName},(err,result)=>{
     if(err){
       console.log(err);
     }
     else{
-      console.log("Successful deletion");
+      if(!result){
+        res.render('index', {currlist: req.params.customListName, tasklist_e: []});
+      }
+      else{
+        res.render('index', {currlist: result.name, tasklist_e: result.lists});
+      }
+    }
+  }));
+});
+
+app.post("/",(req,res)=>{
+    let task_name = req.body.task;
+    let list_name = req.body.list;
+    const task = new List({
+      name: task_name
+    });
+    if(list_name === "Today"){
+      task.save();
       res.redirect("/");
     }
-  })
+    else{
+      listStore.findOne({name: list_name},(err, result)=>{
+        if(err){
+          console.log(err);
+        }
+        else{
+          if(!result){ 
+          const list1 = new listStore({
+            name: list_name,
+            lists: [task]
+          }); 
+          list1.save();
+          res.redirect("/"+list_name);
+          }
+          else{
+          result.lists.push(task);
+          result.save();
+          res.redirect("/"+list_name);
+          }
+        }
+      });
+    }
+
+});
+
+app.post("/delete",(req,res)=>{
+  console.log(req.body);
+  let listHead = req.body.list_id;
+  let listItemId = req.body.checkbox;
+  console.log(listHead);
+  console.log(listItemId);
+  if(listHead === "Today"){
+    List.deleteOne({_id: listItemId},(err)=>{
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log("Successful deletion");
+        res.redirect("/");
+      }
+    })
+  }
+  else{
+    console.log(2);
+    listStore.findOneAndUpdate({name: listHead},{$pull: {lists: {_id: listItemId}}},(err,result)=>{
+      if(err){
+        console.log(err);
+      }
+      else{
+        res.redirect("/"+listHead);
+      }
+    });    
+  }
 })
 
 app.listen('3000',()=>{
